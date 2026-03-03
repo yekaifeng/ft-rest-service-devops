@@ -1,0 +1,15 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: ft-rest-service
+  labels:
+    app: ft-rest-service
+spec:
+  host: ft-rest-service.apps.sandy.ocp4.cn
+  to:
+    kind: Service
+    name: ft-rest-service
+    weight: 100
+  port:
+    targetPort: http
+  wildcardPolicy: None

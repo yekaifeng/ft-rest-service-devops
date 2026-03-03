@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ft-rest-service
+  labels:
+    app: ft-rest-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ft-rest-service
+  template:
+    metadata:
+      labels:
+        app: ft-rest-service
+    spec:
+      containers:
+        - name: ft-rest-service
+          image: registry.ocp4.cn/redhat/ft-rest-service:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+              scheme: HTTP
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+              scheme: HTTP
+          resources:
+            requests:
+              cpu: 100m
+              memory: 512Mi
+            limits:
+              cpu: "4"
+              memory: 2Gi
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: dev
+            - name: LOG_LEVEL
+              valueFrom:
+                configMapKeyRef:
+                  name: ft-rest-service-config
+                  key: log_level
