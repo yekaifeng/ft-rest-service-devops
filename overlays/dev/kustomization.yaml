@@ -15,7 +15,7 @@ patches:
     patch: |-
       - op: replace
         path: /spec/host
-        value: ft-rest-service-dev.apps.sandy.ocp4.cn
+        value: ft-rest-service-dev.apps.valen.ocp4.net
 
 configMapGenerator:
   - name: ft-rest-service-config
