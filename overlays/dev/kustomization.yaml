@@ -6,7 +6,7 @@ resources:
 
 images:
   - name: registry.ocp4.cn/redhat/ft-rest-service
-    newTag: dev
+    newTag: latest
 
 patches:
   - target:
