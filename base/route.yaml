@@ -4,6 +4,8 @@ metadata:
   name: ft-rest-service
   labels:
     app: ft-rest-service
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
 spec:
   host: ft-rest-service.apps.sandy.ocp4.cn
   to:

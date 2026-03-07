@@ -4,6 +4,8 @@ metadata:
   name: ft-rest-service
   labels:
     app: ft-rest-service
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   replicas: 1
   selector:
