@@ -19,7 +19,7 @@ spec:
       containers:
         - name: ft-rest-service
           image: registry.ocp4.cn/redhat/ft-rest-service:latest
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           ports:
             - containerPort: 8080
               protocol: TCP
